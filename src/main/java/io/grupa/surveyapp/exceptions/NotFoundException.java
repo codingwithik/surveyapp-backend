@@ -1,4 +1,4 @@
-package ng.optisoft.kadick.kadickbackend.exceptions;
+package io.grupa.surveyapp.exceptions;
 
 
 public class NotFoundException extends RuntimeException {

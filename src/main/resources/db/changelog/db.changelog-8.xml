@@ -1,0 +1,46 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="ik (generated)" id="1590393053068-1">
+        <createTable tableName="loan_categories">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="loan_categoriesPK"/>
+            </column>
+            <column name="created_at" type="datetime"/>
+            <column name="description" type="TEXT"/>
+            <column name="name" type="VARCHAR(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="percentage" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_code" type="VARCHAR(30)"/>
+            <column name="rate" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime"/>
+            <column name="added_by_id" type="BIGINT"/>
+            <column name="updated_by_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1590393053068-2">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="loan" constraintName="FK87w4gbf62wrq319rbquw024i4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="loan_categories"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1590393053068-3">
+        <addForeignKeyConstraint baseColumnNames="updated_by_id" baseTableName="loan_categories" constraintName="FKe9o58i45vqec3u3ke987lkt81" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="admin_user"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1590393053068-4">
+        <addForeignKeyConstraint baseColumnNames="added_by_id" baseTableName="loan_categories" constraintName="FKs3g8iax24aesah9q0q0fha07r" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="admin_user"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1590393053068-5">
+        <dropForeignKeyConstraint baseTableName="loan" constraintName="FK3757nussckgdb3r5uqvi7p55i"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1590393053068-6">
+        <dropForeignKeyConstraint baseTableName="loan_category" constraintName="FKdjl1emffdj16efjf9vutwr34b"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1590393053068-7">
+        <dropForeignKeyConstraint baseTableName="loan_category" constraintName="FKpe5d8s3fk67sxmai76vf69pi6"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1590393053068-8">
+        <dropTable tableName="loan_category"/>
+    </changeSet>
+</databaseChangeLog>

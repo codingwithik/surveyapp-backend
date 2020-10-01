@@ -1,0 +1,226 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="ik (generated)" id="1588768501716-1">
+        <createTable tableName="employment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="employmentPK"/>
+            </column>
+            <column name="company_name" type="VARCHAR(255)"/>
+            <column name="created_at" type="datetime"/>
+            <column name="employment_status" type="VARCHAR(255)"/>
+            <column name="income" type="VARCHAR(255)"/>
+            <column name="position" type="VARCHAR(255)"/>
+            <column name="salary" type="VARCHAR(255)"/>
+            <column name="updated_at" type="datetime"/>
+            <column name="work_address" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-2">
+        <createTable tableName="loan">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="loanPK"/>
+            </column>
+            <column name="account_number" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19, 2)"/>
+            <column name="bureau_ids" type="VARCHAR(255)"/>
+            <column name="created_at" type="datetime"/>
+            <column name="crms_no" type="VARCHAR(255)"/>
+            <column name="currency_code" type="VARCHAR(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_bvn" type="TEXT"/>
+            <column name="customer_email" type="VARCHAR(70)"/>
+            <column name="customer_name" type="VARCHAR(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiry_date" type="datetime"/>
+            <column name="ip_address" type="VARCHAR(255)"/>
+            <column name="purpose" type="VARCHAR(255)"/>
+            <column name="rate" type="DOUBLE"/>
+            <column name="ref_no" type="VARCHAR(255)"/>
+            <column name="repayment" type="DECIMAL(19, 2)"/>
+            <column name="repayment_date" type="datetime"/>
+            <column name="repayment_plan" type="INT"/>
+            <column name="retry_count" type="INT"/>
+            <column name="security_name" type="VARCHAR(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="security_type" type="VARCHAR(255)"/>
+            <column name="status" type="INT"/>
+            <column name="tenor" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trans_date" type="datetime"/>
+            <column name="ubn_backed_loan" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime"/>
+            <column name="user_uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wallet_id" type="VARCHAR(70)"/>
+            <column name="category_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-3">
+        <createTable tableName="loan_category">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime"/>
+            <column name="description" type="TEXT"/>
+            <column name="name" type="VARCHAR(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="percentage" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_code" type="VARCHAR(30)"/>
+            <column name="rate" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime"/>
+            <column name="added_by_id" type="BIGINT"/>
+            <column name="updated_by_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-4">
+        <createTable tableName="loan_schedule">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="loan_schedulePK"/>
+            </column>
+            <column name="account_name" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_number" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="DECIMAL(19, 2)"/>
+            <column name="currency_code" type="VARCHAR(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emi" type="DECIMAL(19, 2)"/>
+            <column name="interest" type="DECIMAL(19, 2)"/>
+            <column name="last_retry_date" type="datetime"/>
+            <column name="loan_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="os_principal" type="DECIMAL(19, 2)"/>
+            <column name="payment_date" type="datetime"/>
+            <column name="principal" type="DECIMAL(19, 2)"/>
+            <column name="retry_count" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_uuid" type="VARCHAR(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wallet_id" type="VARCHAR(70)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-5">
+        <createTable tableName="paid_loan_schedule">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="paid_loan_schedulePK"/>
+            </column>
+            <column name="amount" type="DECIMAL(19, 2)"/>
+            <column name="created_at" type="datetime"/>
+            <column name="emi" type="DECIMAL(19, 2)"/>
+            <column name="interest" type="DECIMAL(19, 2)"/>
+            <column name="loan_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="os_principal" type="DECIMAL(19, 2)"/>
+            <column name="payment_date" type="datetime"/>
+            <column name="payment_status" type="INT"/>
+            <column name="principal" type="DECIMAL(19, 2)"/>
+            <column name="updated_at" type="datetime"/>
+            <column name="user_uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wallet_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-6">
+        <addColumn tableName="admin_user">
+            <column name="added_by_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-7">
+        <addColumn tableName="users">
+            <column name="education" type="varchar(70)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-8">
+        <addColumn tableName="users">
+            <column name="employment_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-9">
+        <addColumn tableName="users">
+            <column name="marital_status" type="varchar(20)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-10">
+        <addColumn tableName="users">
+            <column name="no_of_children" type="varchar(3)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-11">
+        <addColumn tableName="users">
+            <column name="passport_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-12">
+        <addColumn tableName="users">
+            <column name="utility_bill_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-13">
+        <addColumn tableName="admin_user">
+            <column name="uuid" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-14">
+        <addColumn tableName="users">
+            <column name="valid_id_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-15">
+        <addPrimaryKey columnNames="id" constraintName="loan_categoryPK" tableName="loan_category"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-16">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="loan" constraintName="FK3757nussckgdb3r5uqvi7p55i" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="loan_category"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-17">
+        <addForeignKeyConstraint baseColumnNames="valid_id_id" baseTableName="users" constraintName="FK8i3m21dw9aad0xnlnmv34c7e6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="document"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-18">
+        <addForeignKeyConstraint baseColumnNames="passport_id" baseTableName="users" constraintName="FKbbvdqx2iklu7m5yyo4dl33n3t" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="document"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-19">
+        <addForeignKeyConstraint baseColumnNames="employment_id" baseTableName="users" constraintName="FKbrbqvye2r9c06v4y331rcq0m3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employment"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-20">
+        <addForeignKeyConstraint baseColumnNames="updated_by_id" baseTableName="loan_category" constraintName="FKdjl1emffdj16efjf9vutwr34b" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="admin_user"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-21">
+        <addForeignKeyConstraint baseColumnNames="utility_bill_id" baseTableName="users" constraintName="FKfob0sshgvklespwwfxuu6n42m" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="document"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-22">
+        <addForeignKeyConstraint baseColumnNames="added_by_id" baseTableName="loan_category" constraintName="FKpe5d8s3fk67sxmai76vf69pi6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="admin_user"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-23">
+        <addForeignKeyConstraint baseColumnNames="added_by_id" baseTableName="admin_user" constraintName="FKqccqu62qxlavp82jeuj1shtnr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="admin_user"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-26">
+        <dropColumn columnName="loans_account" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1588768501716-27">
+        <dropColumn columnName="rc_number" tableName="users"/>
+    </changeSet>
+</databaseChangeLog>

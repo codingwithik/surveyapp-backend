@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="ik (generated)" id="1589663906173-1">
+        <addColumn tableName="account">
+            <column name="added_by_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1589663906173-2">
+        <addColumn tableName="user">
+            <column name="invite_code" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1589663906173-3">
+        <addColumn tableName="user">
+            <column name="referal_code" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1589663906173-4">
+        <addColumn tableName="user">
+            <column name="referred_status" type="bit"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1589663906173-5">
+        <addForeignKeyConstraint baseColumnNames="added_by_id" baseTableName="account" constraintName="FKeku79k4lij2cake3i6gjn5i0d" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1589663906173-8">
+        <dropColumn columnName="ubn_backed_loan" tableName="loan"/>
+    </changeSet>
+</databaseChangeLog>

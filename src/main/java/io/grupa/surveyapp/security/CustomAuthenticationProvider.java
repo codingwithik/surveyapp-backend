@@ -63,7 +63,7 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
 				
 
 			}else if(clientId.equalsIgnoreCase("web-client")) {
-				if (!userDetails.getRole().equalsIgnoreCase("ROLE_ADMIN")) {
+				if (!userDetails.getRole().equalsIgnoreCase("ROLE_COORDINATOR")) {
 					throw new BadCredentialsException(
 							messageSource.getMessage("user.not.found", null, LocaleContextHolder.getLocale()));
 				}

@@ -3,7 +3,7 @@
  	 
  	<include file="db/changelog/db.changelog-1.xml" />
  
-  	<changeSet id="1561040019818-153" author="ik">
+  	<changeSet id="1561040019818-154" author="ik">
 		<sqlFile dbms="mysql,mssql"
 			path="db/migration/migration-1.sql" />
 	</changeSet>

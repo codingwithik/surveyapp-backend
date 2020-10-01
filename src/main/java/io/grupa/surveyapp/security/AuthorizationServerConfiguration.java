@@ -38,19 +38,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	               .authorities ("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "USER")
 	               .scopes ("read", "write")
 	               .autoApprove (true)     
-	               .secret (passwordEncoder (). encode ("password")).and()
-	               .withClient ("mobile-client")
-               .authorizedGrantTypes ("password", "authorization_code", "refresh_token", "implicit")
-               .authorities ("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "USER")
-               .scopes ("read", "write")
-               .autoApprove (true)     
-               .secret (passwordEncoder (). encode ("priest")).and()
-               .withClient ("admin-client")
-               .authorizedGrantTypes ("password", "authorization_code", "refresh_token", "implicit")
-               .authorities ("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT", "USER")
-               .scopes ("read", "write")
-               .autoApprove (true)     
-               .secret (passwordEncoder (). encode ("kadickadmin")); 
+	               .secret (passwordEncoder (). encode ("password"));
 	   }
 	   
 	    @Override

@@ -3,7 +3,6 @@ package io.grupa.surveyapp.security;
 
 import java.nio.charset.Charset;
 import java.util.Base64;
-import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
@@ -59,9 +58,8 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
 
 				@SuppressWarnings({ "unchecked" })
 				Map<String, String> map = (Map<String, String>) auth.getDetails();
-				String username = map.get("username");
+				//String username = map.get("username");
 				
-				System.out.println("ddddddddd...."+map);
 				
 
 			}else if(clientId.equalsIgnoreCase("web-client")) {

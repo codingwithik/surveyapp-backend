@@ -1,11 +1,13 @@
 package io.grupa.surveyapp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "surveys")
@@ -31,10 +33,20 @@ public class Survey implements Serializable {
     @Column()
     private Long coordinatorId;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinTable(
+            name = "questions",
+            joinColumns = @JoinColumn(name = "survey_id"),
+            inverseJoinColumns = @JoinColumn(name = "id")
+    )
+    private List<Question> questions;
+
     @Column(updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt = new Date();
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+
 
 }

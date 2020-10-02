@@ -33,7 +33,7 @@ public class Survey implements Serializable {
 
     @Column(updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
+    private Date createdAt = new Date();
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 

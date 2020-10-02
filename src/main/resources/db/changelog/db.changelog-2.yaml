@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-survey
+      author: abdul
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: surveys
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: survey_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: description
+                  type: VARCHAR(250)
+              - column:
+                  name: coordinator
+                  type: BIGINT
+            tableName: surveys

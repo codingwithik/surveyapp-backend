@@ -1,214 +1,214 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <changeSet author="ik (generated)" id="1587826032928-1">
-        <createTable tableName="account">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="accountPK"/>
-            </column>
-            <column name="account_name" type="VARCHAR(255)"/>
-            <column name="account_number" type="VARCHAR(15)">
+    <changeSet author="ik (generated)" id="1601569161751-1">
+        <addColumn tableName="users">
+            <column name="name" type="varchar(32)">
                 <constraints nullable="false"/>
             </column>
-            <column name="account_type" type="VARCHAR(4)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="bank_code" type="VARCHAR(6)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="created_at" type="datetime"/>
-            <column name="nip_code" type="VARCHAR(10)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="updated_at" type="datetime"/>
-        </createTable>
+        </addColumn>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-2">
-        <createTable tableName="admin_user">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="admin_userPK"/>
-            </column>
-            <column name="address" type="TEXT"/>
-            <column name="created_at" type="datetime"/>
-            <column name="display_name" type="VARCHAR(20)"/>
-            <column name="email" type="VARCHAR(20)"/>
-            <column name="enable" type="BIT"/>
-            <column name="first_name" type="VARCHAR(20)"/>
-            <column name="last_login" type="datetime"/>
-            <column name="last_name" type="VARCHAR(20)"/>
-            <column name="password" type="VARCHAR(255)"/>
-            <column name="photo" type="TEXT"/>
-            <column name="role" type="VARCHAR(255)"/>
-            <column name="updated_at" type="datetime"/>
-        </createTable>
+    <changeSet author="ik (generated)" id="1601569161751-2">
+        <dropForeignKeyConstraint baseTableName="users" constraintName="FK3pwaj86pwopu3ot96qlrfo2up"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-3">
-        <createTable tableName="device">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="devicePK"/>
-            </column>
-            <column name="added_by" type="TINYBLOB"/>
-            <column name="created_at" type="datetime"/>
-            <column name="device_code" type="VARCHAR(255)"/>
-            <column name="device_ip" type="VARCHAR(255)"/>
-            <column name="device_type" type="VARCHAR(255)"/>
-            <column name="device_version" type="VARCHAR(255)"/>
-            <column name="os_type" type="VARCHAR(255)"/>
-            <column name="software_version" type="VARCHAR(255)"/>
-            <column name="updated_at" type="datetime"/>
-            <column name="updated_by" type="TINYBLOB"/>
-            <column name="location_id" type="BIGINT"/>
-        </createTable>
+    <changeSet author="ik (generated)" id="1601569161751-3">
+        <dropForeignKeyConstraint baseTableName="password_reset_token" constraintName="FK83nsrttkwkb6ym0anu051mtxn"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-4">
-        <createTable tableName="document">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="documentPK"/>
-            </column>
-            <column name="added_by" type="TINYBLOB"/>
-            <column name="created_at" type="datetime"/>
-            <column name="description" type="VARCHAR(255)"/>
-            <column name="name" type="VARCHAR(32)"/>
-            <column name="updated_at" type="datetime"/>
-            <column name="updated_by" type="TINYBLOB"/>
-            <column name="url" type="VARCHAR(255)"/>
-        </createTable>
+    <changeSet author="ik (generated)" id="1601569161751-4">
+        <dropForeignKeyConstraint baseTableName="loan" constraintName="FK87w4gbf62wrq319rbquw024i4"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-5">
-        <createTable tableName="location">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="locationPK"/>
-            </column>
-            <column name="latitude" type="VARCHAR(30)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="longitude" type="VARCHAR(30)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
+    <changeSet author="ik (generated)" id="1601569161751-5">
+        <dropForeignKeyConstraint baseTableName="users" constraintName="FKbrbqvye2r9c06v4y331rcq0m3"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-6">
-        <createTable tableName="password_reset_token">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="password_reset_tokenPK"/>
-            </column>
-            <column name="expiry_date" type="datetime"/>
-            <column name="token" type="VARCHAR(255)"/>
-            <column name="user_id" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
+    <changeSet author="ik (generated)" id="1601569161751-6">
+        <dropForeignKeyConstraint baseTableName="employment" constraintName="FKdb74s608vv5xe0ophy3k2v0x9"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-7">
-        <createTable tableName="register_attempt">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="register_attemptPK"/>
-            </column>
-            <column name="bvn" type="VARCHAR(12)"/>
-            <column name="created_at" type="datetime"/>
-            <column name="email" type="VARCHAR(10)"/>
-            <column name="first_name" type="VARCHAR(32)"/>
-            <column name="last_name" type="VARCHAR(32)"/>
-            <column name="phone_number" type="VARCHAR(15)"/>
-            <column name="tnc" type="BIT"/>
-            <column name="updated_at" type="datetime"/>
-        </createTable>
+    <changeSet author="ik (generated)" id="1601569161751-7">
+        <dropForeignKeyConstraint baseTableName="loan_categories" constraintName="FKe9o58i45vqec3u3ke987lkt81"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-8">
-        <createTable tableName="security_question">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="security_questionPK"/>
-            </column>
-            <column name="answer" type="VARCHAR(255)"/>
-            <column name="created_at" type="datetime"/>
-            <column name="question" type="TEXT"/>
-            <column name="updated_at" type="datetime"/>
-        </createTable>
+    <changeSet author="ik (generated)" id="1601569161751-8">
+        <dropForeignKeyConstraint baseTableName="users" constraintName="FKlysv70v4ofckky2bata37xy2f"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-9">
-        <createTable tableName="users">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="usersPK"/>
-            </column>
-            <column name="address" type="VARCHAR(255)"/>
-            <column name="bussiness_name" type="VARCHAR(255)"/>
-            <column name="bvn" type="TEXT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="city" type="VARCHAR(32)"/>
-            <column name="country" type="VARCHAR(32)"/>
-            <column name="created_at" type="datetime"/>
-            <column name="dob" type="date"/>
-            <column name="email" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="enable" type="BIT"/>
-            <column name="fbase_password" type="VARCHAR(255)"/>
-            <column name="first_name" type="VARCHAR(32)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="gender" type="VARCHAR(15)"/>
-            <column name="last_login" type="datetime"/>
-            <column name="last_name" type="VARCHAR(32)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="loans_account" type="VARCHAR(15)"/>
-            <column name="password" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="phone_number" type="VARCHAR(32)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="pin" type="VARCHAR(255)"/>
-            <column name="rc_number" type="VARCHAR(255)"/>
-            <column name="role" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="state" type="VARCHAR(32)"/>
-            <column name="title" type="VARCHAR(255)"/>
-            <column name="updated_at" type="datetime"/>
-            <column name="user_type" type="VARCHAR(255)"/>
-            <column name="username" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="uuid" type="VARCHAR(255)"/>
-            <column name="wallet_id" type="VARCHAR(70)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="account_id" type="BIGINT"/>
-            <column name="image_id" type="BIGINT"/>
-            <column name="question_id" type="BIGINT"/>
-            <column name="signature_id" type="BIGINT"/>
-            <column name="user_device_id" type="BIGINT"/>
-        </createTable>
+    <changeSet author="ik (generated)" id="1601569161751-9">
+        <dropForeignKeyConstraint baseTableName="device" constraintName="FKpi1ebkqu0bc3f3yh500kyf1m8"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-10">
-        <addUniqueConstraint columnNames="device_code" constraintName="UC_DEVICEDEVICE_CODE_COL" tableName="device"/>
+    <changeSet author="ik (generated)" id="1601569161751-10">
+        <dropForeignKeyConstraint baseTableName="users_users_refered" constraintName="FKq5d982p4re9dfanixla8gtu3i"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-11">
-        <addUniqueConstraint columnNames="email" constraintName="UC_USERSEMAIL_COL" tableName="users"/>
+    <changeSet author="ik (generated)" id="1601569161751-11">
+        <dropForeignKeyConstraint baseTableName="users_users_refered" constraintName="FKq8ulmuce1j9v89xi667kbv9dv"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-12">
-        <addUniqueConstraint columnNames="username" constraintName="UC_USERSUSERNAME_COL" tableName="users"/>
+    <changeSet author="ik (generated)" id="1601569161751-12">
+        <dropForeignKeyConstraint baseTableName="admin_user" constraintName="FKqccqu62qxlavp82jeuj1shtnr"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-13">
-        <addForeignKeyConstraint baseColumnNames="account_id" baseTableName="users" constraintName="FK3pwaj86pwopu3ot96qlrfo2up" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="account"/>
+    <changeSet author="ik (generated)" id="1601569161751-13">
+        <dropForeignKeyConstraint baseTableName="loan_categories" constraintName="FKs3g8iax24aesah9q0q0fha07r"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-14">
-        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="password_reset_token" constraintName="FK83nsrttkwkb6ym0anu051mtxn" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users"/>
+    <changeSet author="ik (generated)" id="1601569161751-14">
+        <dropForeignKeyConstraint baseTableName="users" constraintName="FKse7gkyddij5upycue1hmihtcb"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-15">
-        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="users" constraintName="FKlysv70v4ofckky2bata37xy2f" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="security_question"/>
+    <changeSet author="ik (generated)" id="1601569161751-15">
+        <dropForeignKeyConstraint baseTableName="admin_user" constraintName="FKvvf7ag2gsqpba1j2np420lyi"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-16">
-        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="device" constraintName="FKpi1ebkqu0bc3f3yh500kyf1m8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="location"/>
+    <changeSet author="ik (generated)" id="1601569161751-16">
+        <dropUniqueConstraint constraintName="UC_BVNHASHHASH_COL" tableName="bvnhash"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-17">
-        <addForeignKeyConstraint baseColumnNames="user_device_id" baseTableName="users" constraintName="FKse7gkyddij5upycue1hmihtcb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="device"/>
+    <changeSet author="ik (generated)" id="1601569161751-17">
+        <dropUniqueConstraint constraintName="UC_DEVICEDEVICE_CODE_COL" tableName="device"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-18">
-        <addForeignKeyConstraint baseColumnNames="signature_id" baseTableName="users" constraintName="FKt6dbfu43lipfe901l5idfk0y3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="document"/>
+    <changeSet author="ik (generated)" id="1601569161751-18">
+        <dropUniqueConstraint constraintName="UC_FIREBASE_TOKENUSER_UUID_COL" tableName="firebase_token"/>
     </changeSet>
-    <changeSet author="ik (generated)" id="1587826032928-19">
-        <addForeignKeyConstraint baseColumnNames="image_id" baseTableName="users" constraintName="FKtqgttxpd9q325xs8egx3ew993" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="document"/>
+    <changeSet author="ik (generated)" id="1601569161751-19">
+        <dropUniqueConstraint constraintName="UK_l6wcb7twpj223imurv4j1xwy8" tableName="users_users_refered"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-20">
+        <dropTable tableName="account"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-21">
+        <dropTable tableName="activity_logs"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-22">
+        <dropTable tableName="admin_activities"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-23">
+        <dropTable tableName="admin_user"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-24">
+        <dropTable tableName="bvnhash"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-25">
+        <dropTable tableName="device"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-26">
+        <dropTable tableName="document"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-27">
+        <dropTable tableName="employment"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-28">
+        <dropTable tableName="firebase_token"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-29">
+        <dropTable tableName="loan"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-30">
+        <dropTable tableName="loan_categories"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-31">
+        <dropTable tableName="loan_schedule"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-32">
+        <dropTable tableName="location"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-35">
+        <dropTable tableName="paid_loan_schedule"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-36">
+        <dropTable tableName="password_reset_token"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-37">
+        <dropTable tableName="paystack_ref"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-38">
+        <dropTable tableName="register_attempt"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-39">
+        <dropTable tableName="security_question"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-40">
+        <dropTable tableName="transactions"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-41">
+        <dropTable tableName="users_users_refered"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-42">
+        <dropColumn columnName="account_id" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-43">
+        <dropColumn columnName="bussiness_name" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-44">
+        <dropColumn columnName="bvn" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-45">
+        <dropColumn columnName="city" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-46">
+        <dropColumn columnName="country" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-47">
+        <dropColumn columnName="dob" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-48">
+        <dropColumn columnName="education" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-49">
+        <dropColumn columnName="employment_id" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-50">
+        <dropColumn columnName="fbase_password" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-51">
+        <dropColumn columnName="first_name" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-52">
+        <dropColumn columnName="gender" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-53">
+        <dropColumn columnName="image" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-54">
+        <dropColumn columnName="invite_code" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-55">
+        <dropColumn columnName="last_login" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-56">
+        <dropColumn columnName="last_name" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-57">
+        <dropColumn columnName="marital_status" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-58">
+        <dropColumn columnName="no_of_children" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-59">
+        <dropColumn columnName="passport" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-60">
+        <dropColumn columnName="pin" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-61">
+        <dropColumn columnName="question_id" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-62">
+        <dropColumn columnName="referal_code" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-63">
+        <dropColumn columnName="signature" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-64">
+        <dropColumn columnName="state" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-65">
+        <dropColumn columnName="title" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-66">
+        <dropColumn columnName="user_device_id" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-67">
+        <dropColumn columnName="user_type" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-68">
+        <dropColumn columnName="utility_bill" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-69">
+        <dropColumn columnName="valid_id" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-70">
+        <dropColumn columnName="wallet_id" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1601569161751-71">
+        <addNotNullConstraint columnDataType="clob" columnName="address" tableName="users"/>
     </changeSet>
 </databaseChangeLog>

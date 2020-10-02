@@ -1,0 +1,76 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="ik (generated)" id="1592000368337-1">
+        <createTable tableName="activity_log">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="activity_logPK"/>
+            </column>
+            <column name="created_at" type="datetime"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="updated_at" type="datetime"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592000368337-2">
+        <createTable tableName="admin_activity">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="admin_activityPK"/>
+            </column>
+            <column name="created_at" type="datetime"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="ip_address" type="VARCHAR(15)"/>
+            <column name="user_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592000368337-3">
+        <createTable tableName="transactions">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="transactionsPK"/>
+            </column>
+            <column name="amount" type="DECIMAL(19, 2)"/>
+            <column name="created_at" type="datetime"/>
+            <column name="currency" type="VARCHAR(3)"/>
+            <column name="date" type="date"/>
+            <column name="narration" type="TEXT"/>
+            <column name="payment_reference" type="VARCHAR(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reference_number" type="VARCHAR(70)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="BIT"/>
+            <column name="transaction_date" type="datetime"/>
+            <column name="transaction_direction" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(15)"/>
+            <column name="updated_at" type="datetime"/>
+            <column name="user_email" type="VARCHAR(70)"/>
+            <column name="user_uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(70)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592000368337-4">
+        <addColumn tableName="paid_loan_schedule">
+            <column name="ip_address" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592000368337-5">
+        <addColumn tableName="loan_schedule">
+            <column name="schedule_ref" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592000368337-6">
+        <addColumn tableName="paid_loan_schedule">
+            <column name="transaction_ref" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,144 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="ik (generated)" id="1592439409775-1">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="usersPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="bussiness_name" type="VARCHAR(255)"/>
+            <column name="bvn" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(32)"/>
+            <column name="country" type="VARCHAR(32)"/>
+            <column name="created_at" type="datetime"/>
+            <column name="dob" type="date"/>
+            <column name="education" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enable" type="BIT"/>
+            <column name="fbase_password" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="VARCHAR(15)"/>
+            <column name="image" type="TEXT"/>
+            <column name="invite_code" type="VARCHAR(255)"/>
+            <column name="last_login" type="datetime"/>
+            <column name="last_name" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="marital_status" type="VARCHAR(20)"/>
+            <column name="no_of_children" type="VARCHAR(3)"/>
+            <column name="passport" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pin" type="VARCHAR(255)"/>
+            <column name="referal_code" type="VARCHAR(255)"/>
+            <column name="role" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="signature" type="VARCHAR(255)"/>
+            <column name="state" type="VARCHAR(32)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="updated_at" type="datetime"/>
+            <column name="user_type" type="VARCHAR(255)"/>
+            <column name="utility_bill" type="VARCHAR(255)"/>
+            <column name="uuid" type="VARCHAR(255)"/>
+            <column name="valid_id" type="VARCHAR(255)"/>
+            <column name="wallet_id" type="VARCHAR(70)"/>
+            <column name="account_id" type="BIGINT"/>
+            <column name="employment_id" type="BIGINT"/>
+            <column name="question_id" type="BIGINT"/>
+            <column name="user_device_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-2">
+        <createTable tableName="users_users_refered">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="users_refered_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-3">
+        <addUniqueConstraint columnNames="email" constraintName="UC_USERSEMAIL_COL" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-4">
+        <addUniqueConstraint columnNames="phone_number" constraintName="UC_USERSPHONE_NUMBER_COL" tableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-5">
+        <addUniqueConstraint columnNames="users_refered_id" constraintName="UK_l6wcb7twpj223imurv4j1xwy8" tableName="users_users_refered"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-6">
+        <addForeignKeyConstraint baseColumnNames="account_id" baseTableName="users" constraintName="FK3pwaj86pwopu3ot96qlrfo2up" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="account"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-7">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="password_reset_token" constraintName="FK83nsrttkwkb6ym0anu051mtxn" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-8">
+        <addForeignKeyConstraint baseColumnNames="employment_id" baseTableName="users" constraintName="FKbrbqvye2r9c06v4y331rcq0m3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employment"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-9">
+        <addForeignKeyConstraint baseColumnNames="added_by_id" baseTableName="employment" constraintName="FKdb74s608vv5xe0ophy3k2v0x9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-10">
+        <addForeignKeyConstraint baseColumnNames="question_id" baseTableName="users" constraintName="FKlysv70v4ofckky2bata37xy2f" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="security_question"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-11">
+        <addForeignKeyConstraint baseColumnNames="users_refered_id" baseTableName="users_users_refered" constraintName="FKq5d982p4re9dfanixla8gtu3i" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-12">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_users_refered" constraintName="FKq8ulmuce1j9v89xi667kbv9dv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-13">
+        <addForeignKeyConstraint baseColumnNames="user_device_id" baseTableName="users" constraintName="FKse7gkyddij5upycue1hmihtcb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="device"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-14">
+        <dropForeignKeyConstraint baseTableName="kadick_users_users_refered" constraintName="FK24pfo4uf0nlnp0swvwglk3h2e"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-15">
+        <dropForeignKeyConstraint baseTableName="kadick_users_users_refered" constraintName="FK3gqcvh2xigpjfbagoeduww7f6"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-16">
+        <dropForeignKeyConstraint baseTableName="kadick_users" constraintName="FK7xk7md4g3dablb7kee4vx1agj"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-17">
+        <dropForeignKeyConstraint baseTableName="kadick_users" constraintName="FK8wvlafa7ho2xuukb0jq4y8jht"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-18">
+        <dropForeignKeyConstraint baseTableName="password_reset_token" constraintName="FK968acvb0nuih76jsyav868546"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-19">
+        <dropForeignKeyConstraint baseTableName="kadick_users" constraintName="FKlxclb0hflvh929knwcqqq308c"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-20">
+        <dropForeignKeyConstraint baseTableName="employment" constraintName="FKo51drbhuilj01yjqx6kgpw9n4"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-21">
+        <dropForeignKeyConstraint baseTableName="kadick_users" constraintName="FKrllhnspitovi523s3ec29vbfp"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-22">
+        <dropUniqueConstraint constraintName="UC_KADICK_USERSEMAIL_COL" tableName="kadick_users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-23">
+        <dropUniqueConstraint constraintName="UC_KADICK_USERSPHONE_NUMBER_COL" tableName="kadick_users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-24">
+        <dropUniqueConstraint constraintName="UK_30pngk0aubbo138dr9l9j289j" tableName="kadick_users_users_refered"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-25">
+        <dropTable tableName="kadick_users"/>
+    </changeSet>
+    <changeSet author="ik (generated)" id="1592439409775-26">
+        <dropTable tableName="kadick_users_users_refered"/>
+    </changeSet>
+</databaseChangeLog>

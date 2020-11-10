@@ -8,6 +8,7 @@ public class Constant {
     public static final String ROLE_RESPONDENT = "ROLE_RESPONDENT";
     public static final String ROLE_ADMIN = "ROLE_SUPERADMIN";
 
-
+    public static final String QUESTION_RADIO = "QUESTION_RADIO";
+    public static final String QUESTION_SELECT = "QUESTION_SELECT";
 
 }

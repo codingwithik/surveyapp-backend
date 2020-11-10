@@ -1,5 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+<<<<<<< HEAD
     <changeSet author="ik (generated)" id="1601597769268-1">
         <createTable tableName="users">
             <column autoIncrement="true" name="id" type="BIGINT">
@@ -34,5 +35,83 @@
     </changeSet>
     <changeSet author="ik (generated)" id="1601597769268-3">
         <addUniqueConstraint columnNames="phone_number" constraintName="UC_USERSPHONE_NUMBER_COL" tableName="users"/>
+=======
+
+    <changeSet  id="1601569161752-6"  author="abdul">
+        <createTable  tableName="surveys" >
+            <column  name="id"  type="bigint"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="name"  type="varchar(50)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="uuid"  type="varchar(50)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="active"  type="boolean"
+                     defaultValueBoolean="true"/>
+            <column  name="description"  type="varchar(250)">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="coordinator_id"  type="bigint">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="created_at"  type="date" >
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="updated_at"  type="date">
+                <constraints  nullable="true"/>
+            </column>
+        </createTable>
     </changeSet>
+
+    <changeSet  id="1601569161752-7"  author="abdul">
+        <createTable  tableName="questions" >
+            <column  name="id"  type="bigint"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="uuid"  type="varchar(50)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="type"  type="varchar(20)">
+                <constraints  nullable="false"/>
+            </column>
+
+            <column  name="question"  type="varchar(250)">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="survey_id"  type="bigint">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="created_at"  type="date" >
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="updated_at"  type="date">
+                <constraints  nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable  tableName="options" >
+            <column  name="id"  type="bigint"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="uuid"  type="varchar(50)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="option"  type="varchar(250)">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="question_id"  type="bigint">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="created_at"  type="date" >
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="updated_at"  type="date">
+                <constraints  nullable="true"/>
+            </column>
+        </createTable>
+>>>>>>> a2b39ecd0472aaedc88aec6c4001333f2c5419d1
+    </changeSet>
+
 </databaseChangeLog>

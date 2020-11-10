@@ -52,7 +52,7 @@ public class UserController {
 			return new GenericResponse(messageSource.getMessage("phone.exist", null, LocaleContextHolder.getLocale()),
 					false, "101");
 
-	
+		validator = PasswordValidator.buildValidator(true, true, true, 3, 20);
 		if (!validator.validatePassword(newUser.getPassword().trim()))
 				return new GenericResponse(
 						messageSource.getMessage("registration.password.invalid", null, LocaleContextHolder.getLocale()),

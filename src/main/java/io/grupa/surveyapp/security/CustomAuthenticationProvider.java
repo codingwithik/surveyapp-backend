@@ -53,22 +53,14 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
 						messageSource.getMessage("account.disabled", null, LocaleContextHolder.getLocale()));
 			}
 
-		if (clientId != null) {
-			if (!clientId.equalsIgnoreCase("web-client")) {
-
-				@SuppressWarnings({ "unchecked" })
-				Map<String, String> map = (Map<String, String>) auth.getDetails();
-				//String username = map.get("username");
-				
-				
-
-			}else if(clientId.equalsIgnoreCase("web-client")) {
-				if (!userDetails.getRole().equalsIgnoreCase("ROLE_COORDINATOR")) {
-					throw new BadCredentialsException(
-							messageSource.getMessage("user.not.found", null, LocaleContextHolder.getLocale()));
-				}
-			}
-		}
+//		if (clientId != null) {
+//			if(clientId.equalsIgnoreCase("web-client")) {
+//				if (!userDetails.getRole().equalsIgnoreCase("ROLE_COORDINATOR")) {
+//					throw new BadCredentialsException(
+//							messageSource.getMessage("user.not.found", null, LocaleContextHolder.getLocale()));
+//				}
+//			}
+//		}
 
 		
 		Object principalToReturn = userDetails;
